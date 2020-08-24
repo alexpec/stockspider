@@ -4,13 +4,13 @@ import numpy as np
 import bovespa
 
 
-files = ['2017', '2018', '2019']
+files = ['2019'] #['2017', '2018', '2019']
 
 company_names = {}
 
 outputfile = 'outputdata.csv'
 outputfile = open(outputfile, 'w')
-print('#Date, Stock Code, Price Open, Price Close, Price High, Price Low, Price Mean, Quantity, Volume', file=outputfile)
+print('Date,Stock Code,Price Open,Price Close,Price High,Price Low,Price Mean,Quantity,Volume', file=outputfile)
 
 for year in files:
 	file_str = '../TimeSeries/COTAHIST_A%s.TXT' %(year)
@@ -32,7 +32,7 @@ for year in files:
 			company_names[code] = company_name
 			print("New company Added: %s - %s" %(code, company_name))
 
-		str_line = '%s, %s, %.2f, %.2f, %.2f, %.2f, %.2f, %s, %s' %(
+		str_line = '%s,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%s,%s' %(
 			date, code, price_open, price_close, price_high, price_low, price_mean, quantity, volume	
 		)
 		print(str_line, file=outputfile)
